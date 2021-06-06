@@ -31,6 +31,8 @@ int main()
         std::cout << "Task 3:" << std::endl;
         constexpr int size = 3;
         int array[size][size][size] = {};
+
+        // fill array
         for (int first = 0; first < size; ++first)
         {
             int (*square)[size] = array[first];
@@ -49,9 +51,14 @@ int main()
         }
         std::cout << std::endl;
 
+        // print center
         int* center = &array[1][1][1];
         std::cout << "Value of center is " << *center << std::endl << std::endl;
+
+        // change center
         *center = 666;
+
+        // print middle of cube
         for (int second = 0; second < size; ++second)
         {
             for (int third = 0; third < size; ++third)
