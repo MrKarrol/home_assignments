@@ -12,6 +12,9 @@ enum class Figure
 	Cross
 };
 
+const Figure PLAYER_FIGURE = Figure::Cross;
+const Figure RED_QUEEN_FIGURE = Figure::Nought;
+
 inline char ToChar(Figure f)
 {
 	switch (f)
@@ -33,16 +36,17 @@ enum class GameResult
 	NoResult = 0,
 	GameContinue,
 	AiWins,
-	PlayerWins
+	PlayerWins,
+	Draw
 };
 
 inline GameResult DefineResult(const Figure figure)
 {
 	switch (figure)
 	{
-	case Figure::Cross:
+	case PLAYER_FIGURE:
 		return GameResult::PlayerWins;
-	case Figure::Nought:
+	case RED_QUEEN_FIGURE:
 		return GameResult::AiWins;
 	default:
 	{
@@ -57,11 +61,18 @@ struct Coords
 {
 	int x = 0;
 	int y = 0;
+	Coords() {}
+	Coords(const int _x, const int _y) : x(_x), y(_y) {}
 };
 
 inline Coords operator +(const Coords& lv, const Coords& rv)
 {
 	return { lv.x + rv.x, lv.y + rv.y };
+}
+
+inline Coords operator -(const Coords& lv, const Coords& rv)
+{
+	return { lv.x - rv.x, lv.y - rv.y };
 }
 
 const std::vector<Coords> DIRS = { {1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}, {-1, -1}, {0, -1}, {1, -1} };

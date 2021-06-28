@@ -73,6 +73,11 @@ bool Field::IsCoordsValid(const Coords& coords) const noexcept
 	return true;
 }
 
+bool Field::IsFree(const Coords& coords) const noexcept
+{
+	return IsCoordsValid(coords) and Get(coords) == Figure::Empty;
+}
+
 bool Field::Set(const Figure figure, const Coords &coords) noexcept
 {
 	if (Get(coords) != Figure::Empty)
@@ -86,6 +91,11 @@ bool Field::Set(const Figure figure, const Coords &coords) noexcept
 Figure Field::Get(const Coords& coords) const noexcept
 {
 	return IsCoordsValid(coords) ? m_field[coords.y][coords.x] : Figure::NoFigure;
+}
+
+Figure Field::Get(const int x, const int y) const noexcept
+{
+	return Get({ x, y });
 }
 
 bool Field::Compare(const Figure figure, const Coords& coords) const noexcept

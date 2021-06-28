@@ -13,13 +13,25 @@ Master::Master()
 
 void Master::InitializeField()
 {
-	std::cout << "Enter field height: ";
 	int height = 3;
-	std::cin >> height;
+	do
+	{
+		std::cout << "Enter field height: ";
 
-	std::cout << "Enter field width: ";
+		std::cin >> height;
+		if (height < 3)
+			std::cout << "Height must be >= 3. ";
+	} while (height < 3);
+	
 	int width = 3;
-	std::cin >> width;
+	do
+	{
+		std::cout << "Enter field width: ";
+		
+		std::cin >> width;
+		if (width < 3)
+			std::cout << "Width must be >= 3. ";
+	} while (width < 3);
 
 	m_field.reset(new Field(height, width));
 }
@@ -34,7 +46,8 @@ void Master::MakeMove()	noexcept
 	++m_turn;
 	m_field->PrintField();
 
-	auto result = RedQueen::IsGameDone(m_field.get());
+	auto result = RedQueen::IsGameDone(m_field.get(), m_turn);
+	
 	if (result != GameResult::GameContinue)
 	{
 		m_isGameNotDone = false;
@@ -49,12 +62,25 @@ void Master::MakeMove()	noexcept
 		std::cout << "Input your x and y: ";
 		int x, y = 0;
 		std::cin >> x >> y;
-		is_valid = m_field->Set(Figure::Cross, { x, y });
+		if (not m_field->IsFree({ x, y }))
+		{
+			std::cout << "Not valid. ";
+			continue;
+		}
+		is_valid = m_field->Set(PLAYER_FIGURE, { x, y });
 		if (not is_valid)
 			std::cout << "Not valid. ";
 	}
+
+	result = RedQueen::IsGameDone(m_field.get(), m_turn);
+	if (result != GameResult::GameContinue)
+	{
+		system("cls");
+		return;
+	}
 	
 	auto queen_move = RedQueen::ChooseMove(m_field.get());
+	std::cout << "Queen choosing " << queen_move.x << " " << queen_move.y << std::endl;
 	if (not m_field->IsCoordsValid(queen_move))
 	{
 		std::cout << "Red Queen was broken, Player wins!" << std::endl;
@@ -62,7 +88,7 @@ void Master::MakeMove()	noexcept
 	}
 	else
 	{
-		m_field->Set(Figure::Nought, queen_move);
+		m_field->Set(RED_QUEEN_FIGURE, queen_move);
 	}
 	system("cls");
 }
@@ -80,6 +106,11 @@ void Master::PrintWinner() noexcept
 	case GameResult::PlayerWins:
 	{
 		std::cout << "You wins! You turned off Red Queen and saved your life! But now all world is destroyed... Thanks to you." << std::endl;
+		break;
+	}
+	case GameResult::Draw:
+	{
+		std::cout << "Wow. Draw. You made up talk with Red Queen. Maybe you will leave this place..." << std::endl;
 		break;
 	}
 	}
