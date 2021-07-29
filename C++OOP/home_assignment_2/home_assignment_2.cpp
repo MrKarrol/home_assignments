@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "Student.h"
+#include "Fruits.h"
 
 namespace students_work
 {
@@ -90,7 +91,17 @@ namespace fruits_work
 {
     void FruitsPayload()
     {
+        Apple a("red");
+        Banana b;
+        GrannySmith c;
 
+        std::cout << "My " << a.getName() << " is " << a.getColor() << ".\n";
+        std::cout << "My " << b.getName() << " is " << b.getColor() << ".\n";
+        std::cout << "My " << c.getName() << " is " << c.getColor() << ".\n";
+
+        std::cout << "Payload is over. Press anything to return to home screen" << std::endl;
+        std::cin.get();
+        std::cin.get();
     }
 } // end of namespace fruits_work
 
