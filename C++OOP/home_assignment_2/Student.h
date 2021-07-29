@@ -8,7 +8,7 @@ class Person
 public:
 	Person();
 	/*Weight counts in kg*/
-	Person(std::string name, int age, bool is_men, float weight);
+	Person(std::string name, int age, bool is_male, float weight);
 
 	void SetName(std::string name) noexcept;
 	std::string Name() const noexcept;
@@ -21,12 +21,12 @@ public:
 	/*Weight in kg*/
 	float Weight() const noexcept;
 
-	bool IsMan() const noexcept;
+	bool IsMale() const noexcept;
 
 private:
 	std::string m_name;
 	int m_age{};
-	bool m_is_man{};
+	bool m_is_male{};
 	/*Weight counts in kg*/
 	float m_weight{};
 
@@ -36,12 +36,8 @@ private:
 class Student : public Person
 {
 public:
-	Student();
-	Student(int education_year);
 	/*Weight counts in kg*/
-	Student(std::string name, int age, bool is_men, float weight);
-	/*Weight counts in kg*/
-	Student(std::string name, int age, bool is_men, float weight, int education_year);
+	Student(std::string name, int age, bool is_male, float weight, int education_year);
 
 	void ChangeYear(int education_year);
 	void ToNextYear();

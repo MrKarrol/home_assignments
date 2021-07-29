@@ -35,7 +35,7 @@ namespace students_work
                     auto& student = students.at(index - 1);
                     std::cout << "Student name: " << student.Name()
                         << ", age " << student.Age()
-                        << ", student is " << (student.IsMan() ? "male" : "female")
+                        << ", student is " << (student.IsMale() ? "male" : "female")
                         << ", weight is " << student.Weight()
                         << ", education year is " << student.Year()
                         << std::endl;

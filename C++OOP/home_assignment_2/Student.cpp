@@ -4,15 +4,15 @@
 Person::Person()
 	: m_name("")
 	, m_age(0)
-	, m_is_man(false)
+	, m_is_male(false)
 	, m_weight(0)
 {
 }
 
-Person::Person(std::string name, int age, bool is_men, float weight)
+Person::Person(std::string name, int age, bool is_male, float weight)
 	: m_name(name)
 	, m_age(age)
-	, m_is_man(is_men)
+	, m_is_male(is_male)
 	, m_weight(weight)
 {
 
@@ -48,29 +48,15 @@ float Person::Weight() const noexcept
 	return m_weight;
 }
 
-bool Person::IsMan() const noexcept
+bool Person::IsMale() const noexcept
 {
-	return m_is_man;
+	return m_is_male;
 }
 
-Student::Student()
-	: Person()
-{
-}
+//-------------------------------------------------------------------------------------
 
-Student::Student(int education_year)
-	: Person()
-	, m_education_year(education_year)
-{
-}
-
-Student::Student(std::string name, int age, bool is_men, float weight)
-	: Person(name, age, is_men, weight)
-{
-}
-
-Student::Student(std::string name, int age, bool is_men, float weight, int education_year)
-	: Person(name, age, is_men, weight)
+Student::Student(std::string name, int age, bool is_male, float weight, int education_year)
+	: Person(name, age, is_male, weight)
 	, m_education_year(education_year)
 {
 }
