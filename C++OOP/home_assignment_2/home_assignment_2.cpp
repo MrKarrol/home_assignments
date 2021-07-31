@@ -28,7 +28,7 @@ namespace students_work
             case 'p':
             {
                 std::cout << ">>>>>>>>>>>>" << std::endl;
-                std::cout << "Input student index (started by 1): ";
+                std::cout << "Input student index (starting by 1): ";
                 int index = 0;
                 std::cin >> index;
                 if (index > 0 and index <= students.size())
@@ -50,7 +50,7 @@ namespace students_work
             case 'd':
             {
                 std::cout << ">>>>>>>>>>>>" << std::endl;
-                std::cout << "Input student index (started by 1): ";
+                std::cout << "Input student index (starting from 1): ";
                 int index = 0;
                 std::cin >> index;
                 if (index > 0 and index <= students.size())

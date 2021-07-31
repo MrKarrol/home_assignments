@@ -9,7 +9,7 @@ Person::Person()
 {
 }
 
-Person::Person(std::string name, int age, bool is_male, float weight)
+Person::Person(const std::string &name, int age, bool is_male, float weight)
 	: m_name(name)
 	, m_age(age)
 	, m_is_male(is_male)
@@ -18,7 +18,7 @@ Person::Person(std::string name, int age, bool is_male, float weight)
 
 }
 
-void Person::SetName(std::string name) noexcept
+void Person::SetName(const std::string &name)
 {
 	m_name = name;
 }
@@ -55,7 +55,7 @@ bool Person::IsMale() const noexcept
 
 //-------------------------------------------------------------------------------------
 
-Student::Student(std::string name, int age, bool is_male, float weight, int education_year)
+Student::Student(const std::string &name, int age, bool is_male, float weight, int education_year)
 	: Person(name, age, is_male, weight)
 	, m_education_year(education_year)
 {

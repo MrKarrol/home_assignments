@@ -8,7 +8,7 @@ class Fruit
 {
 public:
 	Fruit();
-	Fruit(std::string name, std::string color);
+	Fruit(const std::string &name, const std::string &color);
 
 	std::string getName() const noexcept;
 	std::string getColor() const noexcept;
@@ -19,13 +19,15 @@ private:
 
 };
 
+
 class Apple : public Fruit
 {
 public:
-	Apple(std::string color);
-	Apple(std::string name, std::string color);
+	explicit Apple(const std::string &color);
+	Apple(const std::string &name, const std::string &color);
 
 };
+
 
 class GrannySmith : public Apple
 {
@@ -33,6 +35,7 @@ public:
 	GrannySmith();
 
 };
+
 
 class Banana : public Fruit
 {

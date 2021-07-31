@@ -8,9 +8,9 @@ class Person
 public:
 	Person();
 	/*Weight counts in kg*/
-	Person(std::string name, int age, bool is_male, float weight);
+	Person(const std::string &name, int age, bool is_male, float weight);
 
-	void SetName(std::string name) noexcept;
+	void SetName(const std::string &name);
 	std::string Name() const noexcept;
 
 	void SetAge(int age) noexcept;
@@ -37,7 +37,7 @@ class Student : public Person
 {
 public:
 	/*Weight counts in kg*/
-	Student(std::string name, int age, bool is_male, float weight, int education_year);
+	Student(const std::string &name, int age, bool is_male, float weight, int education_year);
 
 	void ChangeYear(int education_year);
 	void ToNextYear();
