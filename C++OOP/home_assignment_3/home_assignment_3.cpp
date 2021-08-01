@@ -2,6 +2,7 @@
 
 #include "Task1.h"
 #include "Task2.h"
+#include "Task3.h"
 
 
 void Task1()
@@ -45,7 +46,7 @@ void Task1()
 
 void Task2()
 {
-    std::cout << "Task 1" << std::endl << std::endl;
+    std::cout << "Task 2" << std::endl << std::endl;
 
     std::cout << "--------------" << std::endl;
     Car car("company", "model");
@@ -59,9 +60,83 @@ void Task2()
     std::cout << std::endl << std::endl;
 }
 
+void Task3()
+{
+    std::cout << "Task 3" << std::endl << std::endl;
+
+    try
+    {
+        std::cout << "trying create fraction with demonimator 0..." << std::endl;
+        Fraction failure(3, 0);
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << "can't create fraction with denominator == 0" << std::endl;
+    }
+
+    Fraction a(3, 5);
+    Fraction b(3, 2);
+
+    std::cout << "using fractions a = " << a.str() << " and b =" << b.str() << " to show operators overload" << std::endl;
+    {
+        const auto c = a + b;
+        std::cout << "Result of + is " << c.str() << std::endl;
+    }
+    {
+        const auto c = a - b;
+        std::cout << "Result of - is " << c.str() << std::endl;
+    }
+    {
+        const auto c = a * b;
+        std::cout << "Result of * is " << c.str() << std::endl;
+    }
+    {
+        const auto c = a / b;
+        std::cout << "Result of / is " << c.str() << std::endl;
+    }
+    {
+        const auto c = -a;
+        std::cout << "Result of -a is " << c.str() << std::endl;
+    }
+    std::cout << std::endl;
+    {
+        std::cout << std::boolalpha;
+        std::cout << "Result of a == b is " << (a == b) << std::endl;
+        std::cout << "Result of a != b is " << (a != b) << std::endl;
+        std::cout << "Result of a < b is " << (a < b) << std::endl;
+        std::cout << "Result of a > b is " << (a > b) << std::endl;
+        std::cout << "Result of a <= b is " << (a <= b) << std::endl;
+        std::cout << "Result of a >= b is " << (a >= b) << std::endl;
+    }
+    std::cout << std::endl;
+    {
+        std::cout << std::boolalpha;
+        std::cout << "Result of b == a is " << (b == a) << std::endl;
+        std::cout << "Result of b != a is " << (b != a) << std::endl;
+        std::cout << "Result of b < a is " << (b < a) << std::endl;
+        std::cout << "Result of b > a is " << (b > a) << std::endl;
+        std::cout << "Result of b <= a is " << (b <= a) << std::endl;
+        std::cout << "Result of b >= a is " << (b >= a) << std::endl;
+    }
+    std::cout << std::endl;
+    {
+        const auto c = a;
+        std::cout << "Making c == a" << std::endl;
+        std::cout << "Result of a == c is " << (a == c) << std::endl;
+        std::cout << "Result of a != c is " << (a != c) << std::endl;
+        std::cout << "Result of a < c is " << (a < c) << std::endl;
+        std::cout << "Result of a > c is " << (a > c) << std::endl;
+        std::cout << "Result of a <= c is " << (a <= c) << std::endl;
+        std::cout << "Result of a >= c is " << (a >= c) << std::endl;
+    }
+
+    std::cout << std::endl << std::endl;
+}
+
 
 int main()
 {
     Task1();
     Task2();
+    Task3();
 }
