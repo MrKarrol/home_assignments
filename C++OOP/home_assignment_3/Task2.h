@@ -7,6 +7,7 @@ class Car
 {
 public:
 	Car(const std::string& company, const std::string& model);
+	virtual ~Car() = default;
 	const std::string& company() const noexcept;
 	const std::string& model() const noexcept;
 
