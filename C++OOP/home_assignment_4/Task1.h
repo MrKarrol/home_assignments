@@ -44,7 +44,8 @@ public:
 
 	T pop_back()
 	{
-		assert(m_size);
+		if (m_size == 0)
+			throw std::length_error("");
 
 		--m_size;
 		return m_data[m_size];
@@ -52,7 +53,8 @@ public:
 
 	T pop_front()
 	{
-		assert(m_size);
+		if (m_size == 0)
+			throw std::length_error("");
 
 		T front_element = m_data[0];
 		for (size_t i = 1u; i < m_size; ++i)
@@ -75,7 +77,8 @@ public:
 
 	T& operator[](int index)
 	{
-		assert(index >= 0 and index < m_size);
+		if (not (index >= 0 and index < m_size))
+			throw std::out_of_range("");
 
 		return m_data[index];
 	}
