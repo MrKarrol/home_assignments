@@ -68,7 +68,7 @@ public:
 		fast_sort(m_data, m_size, compare);
 	}
 
-	void print()
+	void print() const
 	{
 		for (size_t i = 0u; i < m_size; ++i)
 			std::cout << m_data[i] << " ";
@@ -94,7 +94,7 @@ public:
 	}
 
 private:
-	void fast_sort(T* data, size_t size, std::function<bool(const T&, const T&)> compare)
+	void fast_sort(T* data, size_t size, std::function<bool(const T&, const T&)> compare) const
 	{
 		if (size < 2)
 			return;
@@ -113,9 +113,7 @@ private:
 
 			if (first <= last)
 			{
-				T temp = data[first];
-				data[first] = data[last];
-				data[last] = temp;
+				std::swap(data[first], data[last]);
 
 				++first;
 				--last;
