@@ -10,7 +10,8 @@ int main()
     // task 1
     {
         using namespace task1;
-        Pair1<int> p1(6, 9);
+        int a = 7, b = 5;
+        Pair1<int> p1(a, b);
         std::cout << "Pair: " << p1.first() << ' ' << p1.second() << '\n';
 
         const Pair1<double> p2(3.4, 7.8);
@@ -20,7 +21,8 @@ int main()
     // task 2
     {
         using namespace task2;
-        Pair<int, double> p1(6, 7.8);
+        int a = 7, b = 5;
+        Pair<int, double> p1(a, b);
         std::cout << "Pair: " << p1.first() << ' ' << p1.second() << '\n';
 
         const Pair<double, int> p2(3.4, 5);
@@ -30,7 +32,8 @@ int main()
     // task 3
     {
         using namespace task3;
-        StringValuePair<int> svp("Amazing", 7);
+        std::string a = "Blabla";
+        StringValuePair<int> svp(a, 7);
         std::cout << "Pair: " << svp.first() << ' ' << svp.second() << '\n';
     }
 }

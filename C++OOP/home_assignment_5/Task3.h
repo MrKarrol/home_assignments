@@ -11,9 +11,13 @@ namespace task3
 	class Pair<std::string, T>
 	{
 	public:
+		Pair(const std::string& first, const T& second)
+			: m_first(first)
+			, m_second(second)
+		{}
 		Pair(std::string&& first, T&& second)
-			: m_first(std::forward<std::string>(first))
-			, m_second(std::forward<T>(second))
+			: m_first(std::move(first))
+			, m_second(std::move(second))
 		{}
 
 		const std::string& first() const
@@ -36,8 +40,11 @@ namespace task3
 	class StringValuePair : public Pair<std::string, T>
 	{
 	public:
+		StringValuePair(const std::string& first, const T& second)
+			: Pair<std::string, T>(first, second)
+		{}
 		StringValuePair(std::string&& first, T&& second)
-			: Pair<std::string, T>(std::forward<std::string>(first), std::forward<T>(second))
+			: Pair<std::string, T>(std::move(first), std::move(second))
 		{}
 
 	};

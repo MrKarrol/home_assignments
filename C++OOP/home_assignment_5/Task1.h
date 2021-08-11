@@ -7,9 +7,14 @@ namespace task1
 	class Pair1
 	{
 	public:
+		Pair1(const T& first, const T& second)
+			: m_first(first)
+			, m_second(second)
+		{}
+
 		Pair1(T&& first, T&& second)
-			: m_first(std::forward<T>(first))
-			, m_second(std::forward<T>(second))
+			: m_first(std::move(first))
+			, m_second(std::move(second))
 		{}
 
 		const T& first() const
